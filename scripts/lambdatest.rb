@@ -6,8 +6,8 @@ TASK_ID = (ENV['TASK_ID'] || 0).to_i
 CONFIG_NAME = ENV['CONFIG_NAME'] || 'single'
 
 CONFIG = YAML.load(File.read(File.join(File.dirname(__FILE__), "../config/#{CONFIG_NAME}.config.yml")))
-CONFIG['username'] = ENV['LT_USERNAME'] || CONFIG['username']
-CONFIG['accessKey'] = ENV['LT_ACCESS_KEY'] || CONFIG['accessKey']
+CONFIG['user'] = ENV['LT_USERNAME'] || CONFIG['user']
+CONFIG['key'] = ENV['LT_ACCESS_KEY'] || CONFIG['key']
 
 
 
@@ -51,12 +51,12 @@ RSpec.configure do |config|
 
     
 
-    #@driver = Selenium::WebDriver.for(:remote,:url => "https://#{CONFIG['username']}:#{CONFIG['accessKey']}@#{CONFIG['server']}/wd/hub",:capabilities => @caps)
+    #@driver = Selenium::WebDriver.for(:remote,:url => "https://#{CONFIG['user']}:#{CONFIG['key']}@#{CONFIG['server']}/wd/hub",:capabilities => @caps)
 
     appium_driver = Appium::Driver.new({
       'caps' => caps,
       'appium_lib' => {
-          :server_url => "https://#{CONFIG['username']}:#{CONFIG['accessKey']}@#{CONFIG['server']}/wd/hub"
+          :server_url => "https://#{CONFIG['user']}:#{CONFIG['key']}@#{CONFIG['server']}/wd/hub"
       }}, true)
     @driver = appium_driver.start_driver
     puts @driver.inspect

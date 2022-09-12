@@ -1,6 +1,6 @@
 server: "mobile-hub.lambdatest.com"
 user: "LT_USERNAME"  #Add your LambdaTest username here
-accessKey: "LT_ACCESS_KEY"  #Add your LambdaTest accessKey here
+key: "LT_ACCESS_KEY"  #Add your LambdaTest accessKey here
 
 common_caps:
   "build": "RSpec Parallel"
